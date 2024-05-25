@@ -2,6 +2,10 @@
 
 -   Docker Desktop or similar container tool for local development.
 
+## Data Model
+
+![Data Model](data-model.png 'System Architecture Diagram')
+
 ### Setup
 
 Execute the following commands in the root directory of the project:
