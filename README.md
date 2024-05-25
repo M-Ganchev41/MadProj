@@ -4,7 +4,7 @@
 
 ## Data Model
 
-![Data Model](data-model.png 'System Architecture Diagram')
+![Data Model](data_model.png 'System Architecture Diagram')
 
 ### Setup
 
