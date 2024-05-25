@@ -1,0 +1,8 @@
+databases[mysql]
+fastapi
+SQLAlchemy
+uvicorn
+httpx
+pandas
+redis
+types-redis

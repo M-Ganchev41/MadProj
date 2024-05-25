@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+    service:
+        build: ./service
+        command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+        volumes:
+            - ./service/:/app/
+        ports:
+            - '8080:8000'
+        environment:
+            - DATABASE_URI=mysql+pymysql://root:admin@car_rental_db/car_rental
+        depends_on:
+            - car_rental_db
+
+    car_rental_db:
+        image: mysql:latest
+        volumes:
+            - db:/var/lib/mysql
+            - ./db/car_rental.sql:/docker-entrypoint-initdb.d/datadump.sql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: admin
+            MYSQL_DATABASE: car_rental
+            MYSQL_PASSWORD: admin
+        healthcheck:
+            test: ['CMD', 'curl', '-f', 'http://localhost:3306']
+            interval: 10s
+            timeout: 10s
+            retries: 5
+volumes:
+    db:
